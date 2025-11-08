@@ -1,4 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+
+/* Palette adapted to front-end.html */
+:root{
+  --bg: #0b1220;
+  --panel: #141b2b;
+  --panel-soft:#1a2236;
+  --border:#27304a;
+  --text:#e6e8ee;
+  --text-dim:#b6bed2;
+  --primary:#2b64ff;
+  --accent:#19a974;
+  --accent-hover:#149265;
+  --focus:#5cc8ff;
+}
 
 * {
   margin: 0;
@@ -8,13 +22,14 @@
 }
 
 body {
-  background: #343541;
+  background: var(--bg);
+  color: var(--text);
 }
 
 #app {
   width: 100vw;
   height: 100vh;
-  background: #343541;
+  background: var(--bg);
 
   display: flex;
   flex-direction: column;
@@ -51,7 +66,7 @@ body {
 }
 
 .ai {
-  background: #40414F;
+  background: var(--panel-soft);
 }
 
 .chat {
@@ -70,7 +85,7 @@ body {
   height: 36px;
   border-radius: 5px;
 
-  background: #5436DA;
+  background: var(--primary);
 
   display: flex;
   justify-content: center;
@@ -78,7 +93,7 @@ body {
 }
 
 .ai .profile {
-  background: #10a37f;
+  background: var(--accent);
 }
 
 .profile img {
@@ -90,7 +105,7 @@ body {
 .message {
   flex: 1;
 
-  color: #dcdcdc;
+  color: var(--text);
   font-size: 20px;
 
   max-width: 100%;
@@ -118,7 +133,7 @@ form {
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
-  background: #40414F;
+  background: var(--panel-soft);
 
   display: flex;
   flex-direction: row;
@@ -128,7 +143,7 @@ form {
 textarea {
   width: 100%;
 
-  color: #fff;
+  color: var(--text);
   font-size: 18px;
 
   padding: 10px;
@@ -153,26 +168,26 @@ form img {
 /* Test */
 
 #content_container {
-  background: #2a2b38;
+  background: var(--panel);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
   max-width: 800px;
   margin: auto;
-  color: white;
+  color: var(--text);
 }
 h2 {
   text-align: center;
 }
 .section {
-  background: #343541;
+  background: var(--panel-soft);
   padding: 15px;
   margin-top: 10px;
   border-radius: 5px;
 }
 .ask-btn, .send-btn {
-  background: #10a37f;
-  color: white;
+  background: var(--accent);
+  color: var(--text);
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -181,7 +196,7 @@ h2 {
   display: block;
 }
 .ask-btn:hover {
-  background: #0c8461;
+  background: var(--accent-hover);
 }
 .question-box {
   display: none;
@@ -197,9 +212,9 @@ h2 {
 .question-box .response {
   margin-top: 10px;
   padding: 10px;
-  background: #40414F;
+  background: var(--panel-soft);
   border-radius: 5px;
-  color: white;
+  color: var(--text);
   white-space: pre-wrap; 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -211,8 +226,8 @@ h2 {
   margin-top: 15px;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #2d8df7;
-  color: white;
+  background-color: var(--primary);
+  color: var(--text);
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -222,7 +237,8 @@ h2 {
 }
 
 #toggle-model:hover {
-  background-color: #1f6ed0;
+  background-color: var(--primary);
+  filter: brightness(0.9);
 }
 
 /* new styles for code*/
@@ -244,3 +260,6 @@ pre {
   display: block;
   color: #9cdcfe;
 }
+
+/* Accessible focus outline aligned with palette */
+:focus-visible{ outline:2px solid var(--focus); outline-offset:2px }
