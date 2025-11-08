@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5173 --strictPort",
+    "kill-port": "npx kill-port 5173",
+    "dev:clean": "npm run kill-port && npm run dev",
     "build": "vite build",
     "preview": "vite preview"
   },

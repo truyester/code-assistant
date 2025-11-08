@@ -40,7 +40,11 @@ document.querySelectorAll('.ask-btn').forEach(button => {
             responseBox.innerHTML = "Pensando...";
 
             try {
-                const response = await fetch('http://localhost:5001/', {
+                // Timeout to avoid hanging forever
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 30000);
+
+                const response = await fetch('/api/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -48,8 +52,11 @@ document.querySelectorAll('.ask-btn').forEach(button => {
                     body: JSON.stringify({
                         prompt: question,
                         model: currentModel
-                    })
+                    }),
+                    signal: controller.signal,
                 });
+
+                clearTimeout(timeoutId);
 
                 if (!response.ok) throw new Error("Error en la respuesta del servidor");
 
@@ -58,6 +65,10 @@ document.querySelectorAll('.ask-btn').forEach(button => {
                 responseBox.innerHTML = answer;
 
             } catch (error) {
+                if (error.name === 'AbortError') {
+                    responseBox.innerHTML = "Tiempo de espera agotado. Verifica que el servidor esté activo y tu conexión a la API.";
+                    return;
+                }
                 responseBox.innerHTML = "Error al obtener la respuesta.";
                 console.error(error);
             }

@@ -18,6 +18,11 @@ const genAI = new GoogleGenAI({
 const app = express();
 app.use(cors());
 app.use(express.json());
+// Simple request logger to diagnose hanging requests
+app.use((req, _res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
 
 app.get('/', async (req, res) => {
   res.status(200).send({ message: 'Hello!' });
@@ -59,6 +64,11 @@ app.post('/', async (req, res) => {
       });
     }
 
+    // Validate API key to fail fast instead of hanging
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).send({ error: 'OPENAI_API_KEY no está configurada.' });
+    }
+
     const response = await openai.completions.create({
       model: 'gpt-3.5-turbo-instruct',
       prompt: prompt,
@@ -81,4 +91,3 @@ app.post('/', async (req, res) => {
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log('AI server started on http://localhost:5001'));
-
