@@ -38,14 +38,14 @@ print(ana.saludar())
         return self._saldo
 
     def depositar(self, monto):
-        if monto < 0:
+        if monto &lt; 0:
             raise ValueError("monto negativo")
         self._saldo += monto
 </code></pre>
   <p><strong>Ejercicio:</strong> agrega <code>retirar</code> validando que no quede saldo negativo.</p>
   <details class="solution"><summary>Mostrar solución</summary>
     <pre><code class="language-python">def retirar(self, monto):
-    if monto < 0: raise ValueError('negativo')
+    if monto &lt; 0: raise ValueError('negativo')
     if monto > self._saldo: raise ValueError('fondos insuficientes')
     self._saldo -= monto
 </code></pre>
@@ -108,3 +108,5 @@ class Persona:
   <button class="ask-btn">Preguntar al asistente</button>
   <div class="question-box"></div>
 </div>
+
+

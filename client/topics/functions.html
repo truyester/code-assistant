@@ -9,9 +9,9 @@ print(area_circulo(2))
   <p><strong>Ejercicio:</strong> define <code>es_primo(n)</code> que devuelva True/False.</p>
   <details class="solution"><summary>Mostrar solución</summary>
     <pre><code class="language-python">def es_primo(n: int) -> bool:
-    if n < 2: return False
+    if n &lt; 2: return False
     i = 2
-    while i * i <= n:
+    while i * i &lt;= n:
         if n % i == 0: return False
         i += 1
     return True
@@ -83,5 +83,6 @@ print(distancia.__doc__)
   <button class="ask-btn">Preguntar al asistente</button>
   <div class="question-box"></div>
 </div>
+
 
 

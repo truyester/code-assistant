@@ -1,23 +1,4 @@
-﻿import '../style.css';
-
-// Fallback para asegurar que el CSS se inyecta aunque el link falle
-(function(){
-  try{
-    var hasStyle = Array.prototype.slice.call(document.styleSheets||[]).some(function(s){ return (s.href||'').indexOf('style.css') !== -1; });
-    if(!hasStyle){
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'style.css?v=' + Date.now();
-      document.head.appendChild(link);
-    }
-  }catch(e){
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'style.css?v=' + Date.now();
-    document.head.appendChild(link);
-  }
-})();
-let currentModel = 'openai';
+﻿let currentModel = 'openai';
 
 // Toggle de modelo
 document.getElementById('toggle-model')?.addEventListener('click', () => {
@@ -69,7 +50,7 @@ async function loadTopic(){
     wireAskButtons(content);
     enhanceCodeBlocks(content);
     enhanceSolutions(content);
-    await ensurePromptsLoaded();
+    enhanceSolutions(content);
     window.scrollTo({top:0, behavior:'smooth'});
   }catch(e){
     content.innerHTML = `<div class="section"><p class="muted">No se pudo cargar el tema.</p></div>`;
@@ -102,7 +83,6 @@ function wireAskButtons(root){
       }
 
       questionBox.innerHTML = `
-        <div id="qp"></div>
         <textarea class="question-input" placeholder="Escribe tu pregunta..."></textarea>
         <button class="send-btn">Enviar</button>
         <div class="response"></div>
@@ -110,7 +90,6 @@ function wireAskButtons(root){
       questionBox.style.display = 'block';
 
       const sendBtn = questionBox.querySelector('.send-btn');
-      renderQuickPrompts(section, questionBox.querySelector('#qp'));
       sendBtn.addEventListener('click', async function () {
         const inputField = questionBox.querySelector('.question-input');
         const responseBox = questionBox.querySelector('.response');
@@ -271,40 +250,6 @@ loadTopic();
 // (autoevaluación revertida)
 
 
-// ===== Quick Prompts (sin estilos) =====
-let PROMPTS_CACHE = null;
-async function ensurePromptsLoaded(){
-  if (PROMPTS_CACHE) return;
-  try{
-    const res = await fetch('/prompts.json');
-    PROMPTS_CACHE = await res.json();
-  }catch(e){
-    console.warn('No se pudieron cargar los prompts rápidos', e);
-    PROMPTS_CACHE = {};
-  }
-}
 
-function renderQuickPrompts(sectionEl, container){
-  if (!container) return;
-  container.innerHTML = '';
-  container.className = 'quick-prompts';
-  const id = (typeof current === 'string' && current) ? current : null;
-  const prompts = (PROMPTS_CACHE && id && PROMPTS_CACHE[id]) ? PROMPTS_CACHE[id] : [];
-  if (!prompts.length) return;
-  // Render como una fila mínima de botones; sin CSS adicional
-  const frag = document.createDocumentFragment();
-  prompts.slice(0,3).forEach((p) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = p;
-    btn.className = 'prompt-chip';
-    btn.addEventListener('click', () => {
-      const box = sectionEl.querySelector('.question-box');
-      const input = box?.querySelector('.question-input');
-      if (input) { input.value = p; input.focus(); }
-      // Solo rellena; el usuario envía manualmente
-    });
-    frag.appendChild(btn);
-  });
-  container.appendChild(frag);
-}
+
+

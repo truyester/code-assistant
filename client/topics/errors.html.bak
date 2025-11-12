@@ -57,7 +57,7 @@ except FileNotFoundError:
     pass
 
 def set_edad(e):
-    if not 0 &lt;= e &lt;= 120:
+    if not 0 <= e <= 120:
         raise EdadInvalida("edad fuera de rango")
 
 try:

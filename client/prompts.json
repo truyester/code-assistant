@@ -1,0 +1,35 @@
+﻿{
+  "data-types": [
+    "En Python, ¿cuál es la diferencia entre int, float y complex? Da ejemplos.",
+    "¿Cómo convertir texto a números de forma segura en Python (con manejo de errores)?",
+    "Muestra operaciones comunes con listas, tuplas, diccionarios y sets en Python."
+  ],
+  "variables": [
+    "Buenas prácticas para nombrar variables en Python con ejemplos.",
+    "Ejemplos del uso de operadores aritméticos, de comparación y lógicos en Python."
+  ],
+  "control": [
+    "Ejemplos de if/elif/else y cuándo preferir match en Python 3.10+.",
+    "Ejercicios con for y while para practicar en Python."
+  ],
+  "functions": [
+    "Cómo definir funciones con parámetros por defecto, *args y **kwargs en Python.",
+    "Ejemplo de función con docstring y anotaciones de tipo en Python."
+  ],
+  "modules": [
+    "Uso básico de módulos estándar (pathlib, json, datetime) en Python.",
+    "Estructura mínima de un paquete en Python con __init__.py."
+  ],
+  "files": [
+    "Ejemplos de lectura y escritura de archivos con with en Python.",
+    "Cómo leer y escribir CSV y JSON en Python con ejemplos."
+  ],
+  "errors": [
+    "Cómo manejar excepciones en Python con try/except/else/finally.",
+    "Ejemplo de excepción personalizada en Python y cuándo usarla."
+  ],
+  "oop": [
+    "Ejemplo de clase en Python con __init__, métodos y propiedades.",
+    "Cómo aplicar herencia en Python con un ejemplo sencillo."
+  ]
+}
