@@ -1,52 +1,27 @@
-<!doctype html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coding Assistant</title>
+    <title>Asistente de Python</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="app">
-      <div id="content_container">
-        <button id="toggle-model">Modelo: OpenAI</button>
-        <h2>Tipos de Datos en Python</h2>
-        
-        <div class="section">
-          <h3>Números</h3>
-          <p>Python soporta varios tipos numéricos como enteros (<code>int</code>), flotantes (<code>float</code>) y números complejos (<code>complex</code>).</p>
-          <button class="ask-btn">Preguntar al asistente</button>          
-          <div class="question-box"></div>
-        </div>
-        
-        <div class="section">
-          <h3>Cadenas de texto</h3>
-          <p>Las cadenas (<code>str</code>) permiten almacenar y manipular texto.</p>
-          <button class="ask-btn">Preguntar al asistente</button>
-          <div class="question-box"></div>
-        </div>
-        
-        <div class="section">
-          <h3>Listas</h3>
-          <p>Las listas (<code>list</code>) son estructuras de datos ordenadas y mutables.</p>
-          <button class="ask-btn">Preguntar al asistente</button>
-          <div class="question-box"></div>
-        </div>
-        
-        <div class="section">
-          <h3>Tuplas</h3>
-          <p>Las tuplas (<code>tuple</code>) son similares a las listas, pero son inmutables.</p>
-          <button class="ask-btn">Preguntar al asistente</button>
-          <div class="question-box"></div>
-        </div>
-        
-        <div class="section">
-          <h3>Diccionarios</h3>
-          <p>Los diccionarios (<code>dict</code>) almacenan pares clave-valor.</p>
-          <button class="ask-btn">Preguntar al asistente</button>
-          <div class="question-box"></div>
+      <div class="wrapper">
+        <div class="layout">
+          <aside class="sidebar" aria-label="Lista de temas de Python">
+            <h2>Temas</h2>
+            <nav class="nav" id="topicsNav"></nav>
+          </aside>
+
+          <main>
+            <button id="toggle-model">Modelo: OpenAI</button>
+            <h2 id="topicTitle">Tipos de Datos en Python</h2>
+            <section id="content"></section>
+          </main>
         </div>
       </div>
     </div>

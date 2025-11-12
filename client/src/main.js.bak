@@ -22,7 +22,7 @@ const TOPICS = [
 const nav = document.getElementById('topicsNav');
 const content = document.getElementById('content');
 const topicTitle = document.getElementById('topicTitle');
-let current = (decodeURIComponent(location.hash.slice(1)) || localStorage.getItem('py-topic') || 'data-types');
+let current = localStorage.getItem('py-topic') || 'data-types';
 
 function renderNav(){
   if (!nav) return;
@@ -32,8 +32,10 @@ function renderNav(){
     btn.textContent = t.label;
     if (t.id === current) btn.setAttribute('aria-current','page');
     btn.addEventListener('click', () => {
-      // sincroniza con URL hash para deep link
-      location.hash = encodeURIComponent(t.id);
+      current = t.id;
+      localStorage.setItem('py-topic', current);
+      renderNav();
+      loadTopic();
     });
     nav.appendChild(btn);
   });
@@ -49,23 +51,11 @@ async function loadTopic(){
     content.innerHTML = html;
     wireAskButtons(content);
     enhanceCodeBlocks(content);
-    enhanceSolutions(content);
-    enhanceSolutions(content);
     window.scrollTo({top:0, behavior:'smooth'});
   }catch(e){
     content.innerHTML = `<div class="section"><p class="muted">No se pudo cargar el tema.</p></div>`;
   }
 }
-
-// Mantén nav y contenido sincronizados con el hash
-window.addEventListener('hashchange', () => {
-  const id = decodeURIComponent(location.hash.slice(1));
-  if (!id) return;
-  current = id;
-  localStorage.setItem('py-topic', current);
-  renderNav();
-  loadTopic();
-});
 
 // Adjunta comportamiento de Preguntar al asistente
 function wireAskButtons(root){
@@ -225,30 +215,7 @@ function enhanceCodeBlocks(container){
   });
 }
 
-// Mejora bloques de solución: cambia el texto del summary al abrir/cerrar
-function enhanceSolutions(container){
-  const nodes = container.querySelectorAll('details.solution');
-  nodes.forEach(d => {
-    const summary = d.querySelector('summary');
-    if (!summary) return;
-    const closedText = summary.getAttribute('data-closed') || 'Mostrar solución';
-    const openText = summary.getAttribute('data-open') || 'Ocultar solución';
-    summary.textContent = d.open ? openText : closedText;
-    d.addEventListener('toggle', () => {
-      summary.textContent = d.open ? openText : closedText;
-    });
-  });
-}
-
 // Init
-// Inicializa respetando el hash si existe
 renderNav();
 loadTopic();
-
-
-// Autoevaluación: encuentra bloques .self-test y evalúa con el API
-// (autoevaluación revertida)
-
-
-
 

@@ -1,0 +1,62 @@
+﻿<div class="section">
+  <h3>Importaciones básicas</h3>
+  <p>Usa <code>import</code> y <code>from ... import ...</code>. Alias con <code>as</code>.</p>
+  <pre><code class="language-python">import math as m
+from random import randint
+
+print(m.sqrt(9))
+print(randint(1, 6))
+</code></pre>
+  <p><strong>Ejercicio:</strong> usa <code>datetime</code> para imprimir la fecha actual con formato AAAA-MM-DD.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from datetime import date
+hoy = date.today()
+print(hoy.strftime("%Y-%m-%d"))
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Módulos estándar útiles</h3>
+  <p><code>os</code>, <code>pathlib</code>, <code>sys</code>, <code>json</code>, <code>csv</code>.</p>
+  <pre><code class="language-python">from pathlib import Path
+import json
+
+ruta = Path("datos.json")
+ruta.write_text(json.dumps({"ok": True}, ensure_ascii=False), encoding="utf-8")
+print(json.loads(ruta.read_text(encoding="utf-8")))
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea un script que liste archivos .py del directorio actual.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from pathlib import Path
+for p in Path('.').glob('*.py'):
+    print(p)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Paquetes y entornos</h3>
+  <p>Estructura de paquetes y gestión con <code>pip</code>.</p>
+  <pre><code class="language-python"># Estructura
+# paquete/
+#   __init__.py
+#   mod.py
+
+# Instalar un paquete (desde terminal):
+# pip install requests
+</code></pre>
+  <p><strong>Ejercicio:</strong> instala <code>requests</code> y realiza un GET a un endpoint público.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">import requests
+r = requests.get('https://httpbin.org/get', timeout=10)
+print(r.status_code)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>

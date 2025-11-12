@@ -1,0 +1,176 @@
+﻿<div class="section">
+  <h3>Números</h3>
+  <p>Python soporta <code>int</code>, <code>float</code> y <code>complex</code>. Conversiones: <code>int()</code>, <code>float()</code>, <code>complex()</code>.</p>
+  <pre><code class="language-python">a = 7           # int
+b = 3.5         # float
+c = 2 + 3j      # complex
+
+# Conversión
+x = int(3.9)    # 3
+y = float("4.2") # 4.2
+
+# Operaciones
+suma = a + int(b)
+area = 3.1416 * (2 ** 2)
+</code></pre>
+  <p><strong>Ejercicio:</strong> pide al usuario el radio de un círculo y calcula área y perímetro con 2 decimales.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">import math
+r = float(input("Radio: "))
+area = math.pi * r ** 2
+perimetro = 2 * math.pi * r
+print(f"Área: {area:.2f} | Perímetro: {perimetro:.2f}")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Cadenas de texto</h3>
+  <p>Las cadenas (<code>str</code>) son inmutables. Métodos comunes: <code>lower</code>, <code>upper</code>, <code>strip</code>, <code>split</code>, <code>join</code>, <code>replace</code>.</p>
+  <pre><code class="language-python">nombre = "  Ada Lovelace  "
+print(nombre.strip().upper())
+
+# f-strings
+anio = 1843
+print(f"{nombre.strip()} publicó en {anio}")
+
+# Slicing
+s = "Python"
+print(s[:3], s[-2:])  # Pyt on
+</code></pre>
+  <p><strong>Ejercicio:</strong> dada una frase, cuenta cuántas palabras tiene y cuántas veces aparece la letra "a".</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">frase = input("Frase: ")
+palabras = [p for p in frase.split() if p]
+conteo_a = sum(1 for c in frase.lower() if c == "a")
+print(len(palabras), conteo_a)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Listas</h3>
+  <p>Secuencias mutables. Métodos: <code>append</code>, <code>extend</code>, <code>insert</code>, <code>remove</code>, <code>pop</code>, <code>sort</code>.</p>
+  <pre><code class="language-python">nums = [3, 1, 4]
+nums.append(1)
+nums.sort()             # [1,1,3,4]
+cuadrados = [n*n for n in nums]
+print(cuadrados)
+</code></pre>
+  <p><strong>Ejercicio:</strong> lee números hasta que el usuario escriba "fin" y muestra el mínimo, máximo y promedio.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">nums = []
+while True:
+    s = input("número (fin para terminar): ")
+    if s.lower() == "fin":
+        break
+    try:
+        nums.append(float(s))
+    except ValueError:
+        print("ignorado")
+if nums:
+    print(min(nums), max(nums), sum(nums)/len(nums))
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Tuplas</h3>
+  <p>Secuencias inmutables; permiten desempaquetado rápido.</p>
+  <pre><code class="language-python">punto = (10, 20)
+x, y = punto
+print(x, y)
+
+# Intercambio rápido
+a, b = 1, 2
+a, b = b, a
+</code></pre>
+  <p><strong>Ejercicio:</strong> dada una lista de tuplas <code>(nombre, nota)</code>, muestra el promedio y el mejor estudiante.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">datos = [("Ana",18),("Luis",15),("Eva",20)]
+prom = sum(n for _,n in datos)/len(datos)
+mejor = max(datos, key=lambda x: x[1])
+print(f"Promedio: {prom:.2f} | Mejor: {mejor[0]} ({mejor[1]})")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Diccionarios</h3>
+  <p>Mapean claves a valores. Métodos: <code>get</code>, <code>keys</code>, <code>values</code>, <code>items</code>, <code>update</code>.</p>
+  <pre><code class="language-python">alumno = {"nombre": "Ana", "edad": 20}
+alumno["curso"] = "Python"
+print(alumno.get("promedio", 0))
+
+for k, v in alumno.items():
+    print(k, v)
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea un contador de palabras: dado un texto, produce un diccionario con frecuencias.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from collections import Counter
+texto = input("Texto: ").lower()
+palabras = [p.strip(",.;:!¿?¡()[]\"' ") for p in texto.split() if p]
+print(Counter(palabras))
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Conjuntos</h3>
+  <p>Conjuntos (<code>set</code>) almacenan elementos únicos y permiten operaciones como unión e intersección.</p>
+  <pre><code class="language-python">a = {1,2,3}
+b = {3,4}
+print(a | b)   # unión {1,2,3,4}
+print(a & b)   # intersección {3}
+</code></pre>
+  <p><strong>Ejercicio:</strong> dada una lista con repetidos, devuelve la lista sin duplicados manteniendo el orden original.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">v = [3,1,2,3,2,1]
+vistos = set()
+res = []
+for x in v:
+    if x not in vistos:
+        vistos.add(x)
+        res.append(x)
+print(res)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Booleanos</h3>
+  <p>Valores lógicos <code>True</code>/<code>False</code>. <code>bool()</code> convierte 0, "", [], {}, None a False.</p>
+  <pre><code class="language-python">print(bool(0), bool("hola"))  # False True
+x = []
+if not x:
+    print("lista vacía")
+</code></pre>
+  <p><strong>Ejercicio:</strong> implementa <code>es_vacia(obj)</code> que devuelva True si el objeto está “vacío”.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def es_vacia(x):
+    if x is None: return True
+    if isinstance(x, (str, list, tuple, dict, set)): return len(x) == 0
+    if isinstance(x, (int, float, complex, bool)): return False
+    try:
+        return len(x) == 0
+    except Exception:
+        return False
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+

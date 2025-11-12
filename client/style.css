@@ -254,12 +254,71 @@ pre {
   line-height: 1.5;
 }
 
-#question-box code {
+.question-box code {
   font-family: 'Fira Code', 'Courier New', monospace;
   white-space: pre-wrap;
   display: block;
   color: #9cdcfe;
 }
 
+/* Copy button for code blocks */
+.code-block { position: relative; }
+.code-block pre { margin: 0; }
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: background .15s ease, opacity .15s ease, transform .05s ease;
+}
+.copy-btn:hover { background: var(--panel-soft); opacity: 1; }
+.copy-btn:active { transform: translateY(1px); }
+.copy-btn.copied { background: var(--accent); color: #fff; border-color: transparent; }
+.copy-btn svg { width: 16px; height: 16px; display: block; }
+
+/* Collapsible solutions */
+details.solution{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+details.solution > summary{
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+  font-weight: 600;
+}
+details.solution > summary::marker{ display:none }
+details.solution[open]{
+  background: var(--panel-soft);
+}
+details.solution pre{ margin-top: 10px; }
+
+
 /* Accessible focus outline aligned with palette */
 :focus-visible{ outline:2px solid var(--focus); outline-offset:2px }
+/* Layout: sidebar + main for topics */
+.wrapper{max-width:1200px; margin:0 auto; padding:24px}
+.layout{display:flex; gap:24px}
+.sidebar{width:280px; flex:0 0 auto; background:linear-gradient(180deg, var(--panel) 0%, #101827 100%); border:1px solid var(--border); border-radius:16px; height:calc(100dvh - 48px); position:sticky; top:24px; overflow:auto; padding:16px}
+.sidebar h2{margin:4px 0 12px; font-size:18px}
+.nav{display:flex; flex-direction:column; gap:6px}
+.nav button{ text-align:left; width:100%; border:1px solid transparent; color:var(--text-dim); background:transparent; padding:10px 12px; border-radius:10px; cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease }
+.nav button:hover{ background:rgba(255,255,255,.04); color:var(--text) }
+.nav button[aria-current="page"]{ background:var(--panel); color:var(--text); border-color:var(--border) }
+main{ flex:1; background:linear-gradient(180deg, var(--panel) 0%, #111a2a 100%); border:1px solid var(--border); border-radius:16px; padding:20px }
+@media (max-width: 1024px){ .layout{flex-direction:column} .sidebar{position:relative; height:auto; top:auto; width:100%} }
+
+.muted{color: var(--text-dim);}

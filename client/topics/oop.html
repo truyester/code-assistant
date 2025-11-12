@@ -1,0 +1,110 @@
+﻿<div class="section">
+  <h3>Clases y objetos</h3>
+  <p>Define tipos propios con atributos y métodos.</p>
+  <pre><code class="language-python">class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        return f"Hola, soy {self.nombre}"
+
+ana = Persona("Ana", 20)
+print(ana.saludar())
+</code></pre>
+  <p><strong>Ejercicio:</strong> añade un método <code>es_mayor_de_edad</code>.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+    def es_mayor_de_edad(self):
+        return self.edad >= 18
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Encapsulamiento y propiedades</h3>
+  <p>Controla el acceso con propiedades.</p>
+  <pre><code class="language-python">class Cuenta:
+    def __init__(self, saldo=0):
+        self._saldo = saldo
+
+    @property
+    def saldo(self):
+        return self._saldo
+
+    def depositar(self, monto):
+        if monto < 0:
+            raise ValueError("monto negativo")
+        self._saldo += monto
+</code></pre>
+  <p><strong>Ejercicio:</strong> agrega <code>retirar</code> validando que no quede saldo negativo.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def retirar(self, monto):
+    if monto < 0: raise ValueError('negativo')
+    if monto > self._saldo: raise ValueError('fondos insuficientes')
+    self._saldo -= monto
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Herencia</h3>
+  <p>Reutiliza y especializa comportamiento.</p>
+  <pre><code class="language-python">class Animal:
+    def hablar(self):
+        return "..."
+
+class Perro(Animal):
+    def hablar(self):
+        return "guau"
+
+print(Perro().hablar())
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea una jerarquía <code>Figura</code>, <code>Circulo</code>, <code>Rectangulo</code> con método <code>area()</code>.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">import math
+class Figura:
+    def area(self): raise NotImplementedError
+class Circulo(Figura):
+    def __init__(self, r): self.r = r
+    def area(self): return math.pi * self.r ** 2
+class Rectangulo(Figura):
+    def __init__(self, a,b): self.a,self.b=a,b
+    def area(self): return self.a * self.b
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Dataclasses (bonus)</h3>
+  <p>Simplifican clases de datos.</p>
+  <pre><code class="language-python">from dataclasses import dataclass
+
+@dataclass
+class Punto:
+    x: int
+    y: int
+
+print(Punto(1,2))
+</code></pre>
+  <p><strong>Ejercicio:</strong> convierte una clase “tradicional” a dataclass y compara el código.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from dataclasses import dataclass
+@dataclass
+class Persona:
+    nombre: str
+    edad: int
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>

@@ -1,0 +1,87 @@
+﻿<div class="section">
+  <h3>Definición y retorno</h3>
+  <p>Funciones se crean con <code>def</code> y pueden devolver valores con <code>return</code>.</p>
+  <pre><code class="language-python">def area_circulo(r):
+    return 3.1416 * r ** 2
+
+print(area_circulo(2))
+</code></pre>
+  <p><strong>Ejercicio:</strong> define <code>es_primo(n)</code> que devuelva True/False.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def es_primo(n: int) -> bool:
+    if n < 2: return False
+    i = 2
+    while i * i <= n:
+        if n % i == 0: return False
+        i += 1
+    return True
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Parámetros y valores por defecto</h3>
+  <p>Los parámetros pueden tener valores por defecto y ser nombrados.</p>
+  <pre><code class="language-python">def saludar(nombre, sep=": "):
+    print("Hola" + sep + nombre)
+
+saludar("Ana")
+saludar("Luis", sep=" - ")
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea una función que formatee nombre y apellido con un separador configurable.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def formato_nombre(nombre, apellido, sep=" "):
+    return f"{nombre}{sep}{apellido}"
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>*args y **kwargs</h3>
+  <p>Permiten aceptar una cantidad variable de argumentos posicionales y nombrados.</p>
+  <pre><code class="language-python">def sumar(*nums):
+    return sum(nums)
+
+print(sumar(1,2,3))
+
+def configurar(**opciones):
+    return opciones
+
+print(configurar(color="azul", modo=True))
+</code></pre>
+  <p><strong>Ejercicio:</strong> implementa <code>media(*nums)</code> que ignore argumentos no numéricos.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def media(*nums):
+    vals = [n for n in nums if isinstance(n, (int,float))]
+    return sum(vals)/len(vals) if vals else 0.0
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Docstrings y anotaciones</h3>
+  <p>Documenta y anota tipos para mejorar la legibilidad.</p>
+  <pre><code class="language-python">def distancia(x: float, y: float) -> float:
+    """Devuelve |x - y|."""
+    return abs(x - y)
+
+print(distancia.__doc__)
+</code></pre>
+  <p><strong>Ejercicio:</strong> añade docstring y anotaciones a una función propia.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def normalizar(texto: str) -> str:
+    """Recorta espacios y pasa a minúsculas."""
+    return texto.strip().lower()
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+

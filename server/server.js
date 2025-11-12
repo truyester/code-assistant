@@ -79,8 +79,12 @@ app.post('/', async (req, res) => {
       presence_penalty: 0,
     });
 
+    const openaiText = response.choices[0].text.trim();
+    // Procesa como Markdown para entregar HTML consistente con Gemini
+    const RenderTextHTML = marked.parse(openaiText);
+
     res.status(200).send({
-      bot: response.choices[0].text.trim(),
+      bot: RenderTextHTML,
     });
 
   } catch (error) {

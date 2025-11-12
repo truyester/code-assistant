@@ -1,0 +1,81 @@
+﻿<div class="section">
+  <h3>Lectura y escritura</h3>
+  <p>Usa <code>with</code> para manejar archivos de forma segura.</p>
+  <pre><code class="language-python"># Escritura
+with open("saludo.txt", "w", encoding="utf-8") as f:
+    f.write("hola\n")
+
+# Lectura
+with open("saludo.txt", "r", encoding="utf-8") as f:
+    print(f.read())
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea un programa que cuente líneas, palabras y caracteres de un archivo.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from pathlib import Path
+texto = Path('saludo.txt').read_text(encoding='utf-8')
+lineas = texto.splitlines()
+palabras = [p for linea in lineas for p in linea.split()]
+print(len(lineas), len(palabras), len(texto))
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>CSV y JSON</h3>
+  <p>Serializa y procesa datos tabulares y estructurados.</p>
+  <pre><code class="language-python">import csv, json
+
+# JSON
+persona = {"nombre":"Ana","edad":20}
+js = json.dumps(persona, ensure_ascii=False)
+print(js)
+
+# CSV
+filas = [["nombre","edad"],["Ana",20],["Luis",22]]
+with open("datos.csv","w",newline="",encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerows(filas)
+</code></pre>
+  <p><strong>Ejercicio:</strong> lee un CSV de notas y calcula el promedio por estudiante.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">import csv
+promedios = {}
+with open('notas.csv','r',encoding='utf-8') as f:
+    reader = csv.reader(f)
+    next(reader, None)
+    for nombre, nota in reader:
+        promedios.setdefault(nombre, []).append(float(nota))
+for n, vals in promedios.items():
+    print(n, sum(vals)/len(vals))
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Pathlib</h3>
+  <p>API moderna para rutas de archivos.</p>
+  <pre><code class="language-python">from pathlib import Path
+p = Path(".")
+for ruta in p.glob("**/*.py"):
+    print(ruta)
+</code></pre>
+  <p><strong>Ejercicio:</strong> copia todos los .txt de una carpeta a otra manteniendo la estructura.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">from pathlib import Path
+import shutil
+src = Path('origen')
+dst = Path('destino')
+for path in src.rglob('*.txt'):
+    rel = path.relative_to(src)
+    target = dst / rel
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(path, target)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>

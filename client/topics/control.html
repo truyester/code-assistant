@@ -1,0 +1,97 @@
+﻿<div class="section">
+  <h3>Condicionales</h3>
+  <p>Controlan el flujo según condiciones booleanas.</p>
+  <pre><code class="language-python">x = int(input("Número:"))
+if x > 0:
+    print("positivo")
+elif x == 0:
+    print("cero")
+else:
+    print("negativo")
+</code></pre>
+  <p><strong>Ejercicio:</strong> pide una nota (0-20) e imprime si aprueba, notable o excelente.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">n = int(input("nota: "))
+if n < 11:
+    print("desaprobado")
+elif n < 18:
+    print("aprobado")
+else:
+    print("excelente")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>match (Python ≥ 3.10)</h3>
+  <p>Patrones para múltiples casos legibles.</p>
+  <pre><code class="language-python">def clasificar(token):
+    match token:
+        case {"tipo": "NUM", "valor": v} if v >= 0:
+            return "número"
+        case str() as s:
+            return f"cadena: {s}"
+        case _:
+            return "otro"
+</code></pre>
+  <p><strong>Ejercicio:</strong> usa <code>match</code> para mapear códigos de error a mensajes.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">def msg(codigo):
+    match codigo:
+        case 400: return "Bad Request"
+        case 401: return "Unauthorized"
+        case 404: return "Not Found"
+        case 500: return "Server Error"
+        case _:   return "Unknown"
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Bucles</h3>
+  <p><code>for</code> para iterables y <code>while</code> para repetición condicional.</p>
+  <pre><code class="language-python"># for
+for i in range(3):
+    print(i)
+
+# while
+n = 3
+while n > 0:
+    print(n)
+    n -= 1
+</code></pre>
+  <p><strong>Ejercicio:</strong> imprime la tabla de multiplicar de un número (1..10).</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">n = int(input("n:"))
+for i in range(1, 11):
+    print(f"{n} x {i} = {n*i}")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Comprensiones</h3>
+  <p>Formas concisas de construir colecciones.</p>
+  <pre><code class="language-python">cuadrados = [n*n for n in range(1, 6)]
+filtrados = [n for n in cuadrados if n % 2 == 0]
+conjunto = {c % 3 for c in cuadrados}
+dict_comp = {n: n*n for n in range(5)}
+</code></pre>
+  <p><strong>Ejercicio:</strong> crea una comprensión que convierta una lista de palabras a sus longitudes, ignorando vacías.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">palabras = ["hola", "", "python"]
+longs = [len(p) for p in palabras if p]
+print(longs)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+

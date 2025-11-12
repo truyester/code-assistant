@@ -1,0 +1,74 @@
+﻿<div class="section">
+  <h3>Variables</h3>
+  <p>Python es de tipado dinámico. Una variable se crea al asignarle un valor.</p>
+  <pre><code class="language-python">mensaje = "Hola"
+contador = 0
+pi = 3.14159
+mensaje, contador = mensaje + " mundo", contador + 1
+print(mensaje, contador)
+</code></pre>
+  <p><strong>Ejercicio:</strong> intercambia los valores de dos variables sin usar una variable temporal.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">a, b = 1, 2
+a, b = b, a
+print(a, b)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Operadores aritméticos</h3>
+  <p>Suma, resta, multiplicación, división, módulo, potencia, división entera: <code>+ - * / % ** //</code>.</p>
+  <pre><code class="language-python">a, b = 7, 3
+print(a + b, a - b, a * b, a / b)
+print(a % b, a ** b, a // b)
+</code></pre>
+  <p><strong>Ejercicio:</strong> calcula el IMC (índice de masa corporal) con peso y altura dados.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">peso = float(input("kg: "))
+altura = float(input("m: "))
+imc = peso / (altura ** 2)
+print(f"IMC: {imc:.2f}")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Comparación y lógicos</h3>
+  <p>Comparación: <code>== != &lt; &lt;= &gt; &gt;=</code>. Lógicos: <code>and</code>, <code>or</code>, <code>not</code>.</p>
+  <pre><code class="language-python">x, y = 10, 20
+print(x &lt; y and y &lt; 30)   # True
+print(not (x == y))       # True
+</code></pre>
+  <p><strong>Ejercicio:</strong> dada una edad y si tiene permiso, decide si puede entrar a un evento (usa and/or).</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python">edad = int(input("edad: "))
+permiso = input("permiso (s/n): ").lower() == "s"
+puede = (edad &gt;= 18) or (edad &gt;= 16 and permiso)
+print("puede" if puede else "no puede")
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
+
+<div class="section">
+  <h3>Asignación y precedencia</h3>
+  <p>Compuestos: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>. Revisa precedencia.</p>
+  <pre><code class="language-python">x = 5
+x *= 2 + 3   # x = 5 * (2 + 3) = 25
+</code></pre>
+  <p><strong>Ejercicio:</strong> reescribe una expresión con paréntesis para que produzca un resultado específico.</p>
+  <details class="solution"><summary>Mostrar solución</summary>
+    <pre><code class="language-python"># Ejemplo: obtener 14 a partir de 2 + 3 * 4
+res = (2 + 3) * 4 - 6
+print(res)
+</code></pre>
+  </details>
+  <button class="ask-btn">Preguntar al asistente</button>
+  <div class="question-box"></div>
+</div>
