@@ -52,6 +52,9 @@ Eres un asistente de aprendizaje de Python para hispanohablantes.
       const response = await genAI.models.generateContent({
         model: "gemini-2.0-flash",
         contents: buildPrompt(prompt),
+        generationConfig: {
+          maxOutputTokens: 300,
+        },
       });
 
       if (!response.candidates || response.candidates.length === 0 || !response.candidates[0].content || !response.candidates[0].content.parts || response.candidates[0].content.parts.length === 0) {
