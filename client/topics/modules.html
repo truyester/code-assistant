@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Importaciones básicas</h3>
   <p>Usa <code>import</code> y <code>from ... import ...</code>. Alias con <code>as</code>.</p>
+  <p>Mantén tus importaciones ordenadas (estándar, terceros, locales) para seguir PEP 8. Los alias evitan conflictos de nombre y clarifican el origen de cada función.</p>
   <pre><code class="language-python">import math as m
 from random import randint
 
@@ -21,6 +22,7 @@ print(hoy.strftime("%Y-%m-%d"))
 <div class="section">
   <h3>Módulos estándar útiles</h3>
   <p><code>os</code>, <code>pathlib</code>, <code>sys</code>, <code>json</code>, <code>csv</code>.</p>
+  <p>Explora la documentación oficial para descubrir utilidades ocultas (p.ej., <code>pathlib.Path.glob</code>, <code>json.loads</code> con <code>object_hook</code>). Evita reinventar la rueda cuando la biblioteca estándar ya lo cubre.</p>
   <pre><code class="language-python">from pathlib import Path
 import json
 
@@ -42,6 +44,7 @@ for p in Path('.').glob('*.py'):
 <div class="section">
   <h3>Paquetes y entornos</h3>
   <p>Estructura de paquetes y gestión con <code>pip</code>.</p>
+  <p>Usa entornos virtuales (<code>python -m venv venv</code>) para aislar dependencias. Documenta en un <code>requirements.txt</code> o <code>pyproject.toml</code> los paquetes necesarios para reproducir tu proyecto.</p>
   <pre><code class="language-python"># Estructura
 # paquete/
 #   __init__.py

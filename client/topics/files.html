@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Lectura y escritura</h3>
   <p>Usa <code>with</code> para manejar archivos de forma segura.</p>
+  <p>El bloque <code>with</code> cierra el archivo automáticamente aunque haya excepciones, evitando fugas de recursos. Recuerda especificar la codificación adecuada (UTF-8 en la mayoría de los casos).</p>
   <pre><code class="language-python"># Escritura
 with open("saludo.txt", "w", encoding="utf-8") as f:
     f.write("hola\n")
@@ -25,6 +26,7 @@ print(len(lineas), len(palabras), len(texto))
 <div class="section">
   <h3>CSV y JSON</h3>
   <p>Serializa y procesa datos tabulares y estructurados.</p>
+  <p>Para JSON complejos, usa <code>json.loads</code>/<code>dumps</code> con <code>default</code> y <code>object_hook</code>. Al manipular CSV, considera <code>DictReader</code>/<code>DictWriter</code> para trabajar con nombres de columna.</p>
   <pre><code class="language-python">import csv, json
 
 # JSON
@@ -58,6 +60,7 @@ for n, vals in promedios.items():
 <div class="section">
   <h3>Pathlib</h3>
   <p>API moderna para rutas de archivos.</p>
+  <p><code>Path</code> permite concatenar rutas con el operador <code>/</code> y ofrece métodos como <code>exists()</code>, <code>mkdir()</code> o <code>rename()</code>. Aporta independencia de sistema operativo.</p>
   <pre><code class="language-python">from pathlib import Path
 p = Path(".")
 for ruta in p.glob("**/*.py"):

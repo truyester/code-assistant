@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Números</h3>
   <p>Python soporta <code>int</code>, <code>float</code> y <code>complex</code>. Conversiones: <code>int()</code>, <code>float()</code>, <code>complex()</code>.</p>
+  <p>Los enteros no tienen límite salvo la memoria disponible y los flotantes siguen el estándar IEEE 754. Los complejos (<code>a + bj</code>) son útiles en cálculos científicos como FFT. Recuerda que <code>type()</code> y <code>isinstance()</code> te ayudan a inspeccionar valores.</p>
   <pre><code class="language-python">a = 7           # int
 b = 3.5         # float
 c = 2 + 3j      # complex
@@ -29,6 +30,7 @@ print(f"Área: {area:.2f} | Perímetro: {perimetro:.2f}")
 <div class="section">
   <h3>Cadenas de texto</h3>
   <p>Las cadenas (<code>str</code>) son inmutables. Métodos comunes: <code>lower</code>, <code>upper</code>, <code>strip</code>, <code>split</code>, <code>join</code>, <code>replace</code>.</p>
+  <p>Los literales pueden declararse con comillas simples, dobles o triples para bloques multilínea. Para formatear, usa f-strings (<code>f"... {valor:.2f}"</code>) o <code>str.format</code> según la versión que mantengas.</p>
   <pre><code class="language-python">nombre = "  Ada Lovelace  "
 print(nombre.strip().upper())
 
@@ -55,6 +57,7 @@ print(len(palabras), conteo_a)
 <div class="section">
   <h3>Listas</h3>
   <p>Secuencias mutables. Métodos: <code>append</code>, <code>extend</code>, <code>insert</code>, <code>remove</code>, <code>pop</code>, <code>sort</code>.</p>
+  <p>Admiten tipos mixtos pero conviene mantener homogeneidad para evitar bugs. Las comprensiones (<code>[f(x) for x in datos]</code>) son la forma idiomática para transformaciones y filtros.</p>
   <pre><code class="language-python">nums = [3, 1, 4]
 nums.append(1)
 nums.sort()             # [1,1,3,4]
@@ -83,6 +86,7 @@ if nums:
 <div class="section">
   <h3>Tuplas</h3>
   <p>Secuencias inmutables; permiten desempaquetado rápido.</p>
+  <p>Son ideales como claves de diccionario o para representar registros ligeros. Puedes convertir entre listas y tuplas con <code>list()</code>/<code>tuple()</code> según necesites mutabilidad.</p>
   <pre><code class="language-python">punto = (10, 20)
 x, y = punto
 print(x, y)
@@ -106,6 +110,7 @@ print(f"Promedio: {prom:.2f} | Mejor: {mejor[0]} ({mejor[1]})")
 <div class="section">
   <h3>Diccionarios</h3>
   <p>Mapean claves a valores. Métodos: <code>get</code>, <code>keys</code>, <code>values</code>, <code>items</code>, <code>update</code>.</p>
+  <p>Las claves deben ser hashables (inmutables). Usa diccionarios por comprensión para construir estructuras: <code>{k: len(k) for k in palabras}</code>.</p>
   <pre><code class="language-python">alumno = {"nombre": "Ana", "edad": 20}
 alumno["curso"] = "Python"
 print(alumno.get("promedio", 0))
@@ -128,6 +133,7 @@ print(Counter(palabras))
 <div class="section">
   <h3>Conjuntos</h3>
   <p>Conjuntos (<code>set</code>) almacenan elementos únicos y permiten operaciones como unión e intersección.</p>
+  <p>Suelen emplearse para eliminar duplicados o probar pertenencia en O(1). Recuerda que no preservan orden; si necesitas orden usa <code>dict.fromkeys</code> o <code>collections.OrderedDict</code>.</p>
   <pre><code class="language-python">a = {1,2,3}
 b = {3,4}
 print(a | b)   # unión {1,2,3,4}
@@ -152,6 +158,7 @@ print(res)
 <div class="section">
   <h3>Booleanos</h3>
   <p>Valores lógicos <code>True</code>/<code>False</code>. <code>bool()</code> convierte 0, "", [], {}, None a False.</p>
+  <p>En Python casi cualquier objeto tiene “verdad” implícita; aprovecha esto en condicionales (<code>if usuarios:</code>). Las operaciones <code>and</code>/<code>or</code> devuelven el operando evaluado, no necesariamente un bool.</p>
   <pre><code class="language-python">print(bool(0), bool("hola"))  # False True
 x = []
 if not x:

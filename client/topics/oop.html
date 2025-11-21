@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Clases y objetos</h3>
   <p>Define tipos propios con atributos y métodos.</p>
+  <p>En Python todo es objeto; aprovecha métodos dunder como <code>__str__</code> para personalizar representaciones o <code>__eq__</code> para comparaciones. Mantén las clases pequeñas y enfocadas.</p>
   <pre><code class="language-python">class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
@@ -29,6 +30,7 @@ print(ana.saludar())
 <div class="section">
   <h3>Encapsulamiento y propiedades</h3>
   <p>Controla el acceso con propiedades.</p>
+  <p>Las propiedades permiten validar datos al leer/escribir sin romper la API. Usa el prefijo <code>_</code> para indicar atributos “privados” por convención.</p>
   <pre><code class="language-python">class Cuenta:
     def __init__(self, saldo=0):
         self._saldo = saldo
@@ -57,6 +59,7 @@ print(ana.saludar())
 <div class="section">
   <h3>Herencia</h3>
   <p>Reutiliza y especializa comportamiento.</p>
+  <p>Cuando la jerarquía se complica, considera composición en lugar de herencia. <code>super()</code> facilita invocar la lógica de la clase base en constructores o métodos sobrescritos.</p>
   <pre><code class="language-python">class Animal:
     def hablar(self):
         return "..."
@@ -87,6 +90,7 @@ class Rectangulo(Figura):
 <div class="section">
   <h3>Dataclasses (bonus)</h3>
   <p>Simplifican clases de datos.</p>
+  <p>Las dataclasses generan automáticamente <code>__init__</code>, <code>__repr__</code> y comparadores. Admite valores por defecto, campos calculados y congelados (<code>frozen=True</code>).</p>
   <pre><code class="language-python">from dataclasses import dataclass
 
 @dataclass

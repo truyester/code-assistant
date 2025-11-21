@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Manejo básico de excepciones</h3>
   <p>Usa <code>try/except</code> para capturar errores esperados.</p>
+  <p>Coloca únicamente el código que podría fallar dentro del bloque <code>try</code> para evitar atrapar excepciones ajenas. Maneja casos específicos antes de usar un <code>except Exception</code> general.</p>
   <pre><code class="language-python">try:
     x = int(input("número: "))
     print(10 / x)
@@ -27,6 +28,7 @@ print(x)
 <div class="section">
   <h3>else y finally</h3>
   <p><code>else</code> corre si no hubo excepción; <code>finally</code> corre siempre.</p>
+  <p>Utiliza <code>else</code> para ejecutar lógica que depende del éxito del bloque principal. <code>finally</code> es ideal para liberar recursos, cerrar archivos o conexiones.</p>
   <pre><code class="language-python">f = None
 try:
     f = open("datos.txt", "r", encoding="utf-8")
@@ -53,6 +55,7 @@ except FileNotFoundError:
 <div class="section">
   <h3>Excepciones personalizadas</h3>
   <p>Define tus propias excepciones para casos de negocio.</p>
+  <p>Las excepciones personalizadas heredan de <code>Exception</code> (o una subclase). Añade mensajes claros y considera implementar atributos adicionales si necesitas transportar más contexto.</p>
   <pre><code class="language-python">class EdadInvalida(Exception):
     pass
 

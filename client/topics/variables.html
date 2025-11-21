@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Variables</h3>
   <p>Python es de tipado dinámico. Una variable se crea al asignarle un valor.</p>
+  <p>Respeta la convención snake_case y evita reutilizar nombres para conceptos distintos. Usa <code>type()</code> o <code>isinstance()</code> solo cuando realmente necesites comprobar tipos.</p>
   <pre><code class="language-python">mensaje = "Hola"
 contador = 0
 pi = 3.14159
@@ -21,6 +22,7 @@ print(a, b)
 <div class="section">
   <h3>Operadores aritméticos</h3>
   <p>Suma, resta, multiplicación, división, módulo, potencia, división entera: <code>+ - * / % ** //</code>.</p>
+  <p>Recuerda que <code>//</code> trunca hacia abajo y <code>%</code> conserva el signo del divisor. Usa <code>math</code> para operaciones avanzadas como raíz cuadrada o factorial.</p>
   <pre><code class="language-python">a, b = 7, 3
 print(a + b, a - b, a * b, a / b)
 print(a % b, a ** b, a // b)
@@ -40,6 +42,7 @@ print(f"IMC: {imc:.2f}")
 <div class="section">
   <h3>Comparación y lógicos</h3>
   <p>Comparación: <code>== != &lt; &lt;= &gt; &gt;=</code>. Lógicos: <code>and</code>, <code>or</code>, <code>not</code>.</p>
+  <p>Los operadores lógicos devuelven el operando evaluado, por lo que puedes encadenarlos en expresiones de asignación. Evita comparar booleanos con <code>True/False</code>; usa directamente la condición.</p>
   <pre><code class="language-python">x, y = 10, 20
 print(x &lt; y and y &lt; 30)   # True
 print(not (x == y))       # True
@@ -59,6 +62,7 @@ print("puede" if puede else "no puede")
 <div class="section">
   <h3>Asignación y precedencia</h3>
   <p>Compuestos: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>. Revisa precedencia.</p>
+  <p>Combinar operadores compuestos ayuda a escribir código más expresivo y evita errores al escribir la variable dos veces. Cuando la precedencia no sea obvia, usa paréntesis para dejar clara la intención.</p>
   <pre><code class="language-python">x = 5
 x *= 2 + 3   # x = 5 * (2 + 3) = 25
 </code></pre>

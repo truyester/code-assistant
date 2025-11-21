@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Condicionales</h3>
   <p>Controlan el flujo según condiciones booleanas.</p>
+  <p>Recuerda que en Python no existe el switch tradicional, por lo que resulta clave estructurar bien las condiciones con orden lógico. Aprovecha expresiones booleanas complejas para reducir repeticiones.</p>
   <pre><code class="language-python">x = int(input("Número:"))
 if x > 0:
     print("positivo")
@@ -27,6 +28,7 @@ else:
 <div class="section">
   <h3>match (Python ≥ 3.10)</h3>
   <p>Patrones para múltiples casos legibles.</p>
+  <p><code>match</code> permite filtrar por estructuras completas (diccionarios, tuplas) y aplicar guardas con <code>if</code>. Ideal para parsear formatos o comandos de forma declarativa.</p>
   <pre><code class="language-python">def clasificar(token):
     match token:
         case {"tipo": "NUM", "valor": v} if v >= 0:
@@ -54,6 +56,7 @@ else:
 <div class="section">
   <h3>Bucles</h3>
   <p><code>for</code> para iterables y <code>while</code> para repetición condicional.</p>
+  <p>Los bucles <code>for</code> en Python iteran sobre cualquier objeto iterable (listas, generadores). Para contar, usa <code>enumerate</code> o <code>range</code>; evita manipular índices manualmente.</p>
   <pre><code class="language-python"># for
 for i in range(3):
     print(i)
@@ -78,6 +81,7 @@ for i in range(1, 11):
 <div class="section">
   <h3>Comprensiones</h3>
   <p>Formas concisas de construir colecciones.</p>
+  <p>Las comprensiones soportan múltiples bucles y condiciones. También existen para conjuntos (<code>{}</code>) y diccionarios (<code>{k: v}</code>), facilitando transformaciones expresivas en una sola línea.</p>
   <pre><code class="language-python">cuadrados = [n*n for n in range(1, 6)]
 filtrados = [n for n in cuadrados if n % 2 == 0]
 conjunto = {c % 3 for c in cuadrados}

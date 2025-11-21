@@ -1,6 +1,7 @@
 ﻿<div class="section">
   <h3>Definición y retorno</h3>
   <p>Funciones se crean con <code>def</code> y pueden devolver valores con <code>return</code>.</p>
+  <p>Procura que cada función haga una sola cosa y documenta los parámetros para mejorar la legibilidad. En Python, retornar múltiples valores se logra con tuplas.</p>
   <pre><code class="language-python">def area_circulo(r):
     return 3.1416 * r ** 2
 
@@ -24,6 +25,7 @@ print(area_circulo(2))
 <div class="section">
   <h3>Parámetros y valores por defecto</h3>
   <p>Los parámetros pueden tener valores por defecto y ser nombrados.</p>
+  <p>Los argumentos por palabra clave permiten invocar funciones en cualquier orden y hacen más expresivo el código. Usa valores inmutables como default para evitar efectos laterales.</p>
   <pre><code class="language-python">def saludar(nombre, sep=": "):
     print("Hola" + sep + nombre)
 
@@ -43,6 +45,7 @@ saludar("Luis", sep=" - ")
 <div class="section">
   <h3>*args y **kwargs</h3>
   <p>Permiten aceptar una cantidad variable de argumentos posicionales y nombrados.</p>
+  <p>Úsalos para construir APIs flexibles (por ejemplo, envoltorios o decoradores). Documenta qué tipo de valores esperas en <code>*args</code>/<code>**kwargs</code> para evitar confusiones.</p>
   <pre><code class="language-python">def sumar(*nums):
     return sum(nums)
 
@@ -67,6 +70,7 @@ print(configurar(color="azul", modo=True))
 <div class="section">
   <h3>Docstrings y anotaciones</h3>
   <p>Documenta y anota tipos para mejorar la legibilidad.</p>
+  <p>Las anotaciones son opcionales pero se integran bien con herramientas de análisis estático (mypy, pyright). Los docstrings siguen la convención de triple comilla y pueden describir parámetros y retornos.</p>
   <pre><code class="language-python">def distancia(x: float, y: float) -> float:
     """Devuelve |x - y|."""
     return abs(x - y)

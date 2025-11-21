@@ -31,6 +31,14 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     const { prompt, model } = req.body;
+    const INSTRUCTIONS = `
+Eres un asistente de aprendizaje de Python para hispanohablantes.
+- Responde SIEMPRE en español.
+- Asume que el usuario es principiante si no dice lo contrario.
+- Orden de respuesta: 1) Explicación, 2) Código en Python explicado bloque por bloque, 3) Posible salida del código.
+- Si preguntan por otros lenguajes, responde brevemente y regresa a Python.
+`.trim();
+    const buildPrompt = (userPrompt) => `${INSTRUCTIONS}\n\nPregunta del usuario:\n${userPrompt || ''}`.trim();
 
     if (model === 'gemini') {
       // 1. Verifica si la clave de la API de Gemini está configurada
@@ -43,7 +51,7 @@ app.post('/', async (req, res) => {
       // 2. Obtén el modelo Gemini Pro
       const response = await genAI.models.generateContent({
         model: "gemini-2.0-flash",
-        contents: prompt,
+        contents: buildPrompt(prompt),
       });
 
       if (!response.candidates || response.candidates.length === 0 || !response.candidates[0].content || !response.candidates[0].content.parts || response.candidates[0].content.parts.length === 0) {
@@ -71,7 +79,7 @@ app.post('/', async (req, res) => {
 
     const response = await openai.completions.create({
       model: 'gpt-3.5-turbo-instruct',
-      prompt: prompt,
+      prompt: buildPrompt(prompt),
       temperature: 0,
       max_tokens: 300,
       top_p: 1,
