@@ -34,7 +34,7 @@ main{ flex:1; background:linear-gradient(180deg, var(--panel) 0%, #111a2a 100%);
 .ask-btn, .send-btn{ background:var(--accent); color:var(--text); border:0; padding:10px 15px; border-radius:5px; cursor:pointer; margin-top:16px; display:block }
 .ask-btn:hover{ background:var(--accent-hover) }
 .question-box{ display:none; margin-top:14px }
-.question-box textarea{ width:100%; padding:10px; border-radius:5px; border:none; outline:none; background:transparent; color:var(--text) }
+.question-box textarea{ width:100%; padding:10px; border-radius:5px; border:none; outline:none; background:transparent; color:var(--text); font-size:16px; line-height:1.45 }
 .question-box .response{ margin-top:10px; padding:10px; background:var(--panel-soft); border-radius:5px; color:var(--text); white-space:pre-wrap; -ms-overflow-style:none; scrollbar-width:none }
 
 /* Modelo */
@@ -43,7 +43,7 @@ main{ flex:1; background:linear-gradient(180deg, var(--panel) 0%, #111a2a 100%);
 
 /* Código */
 pre{ background:#1e1e1e; color:#dcdcdc; padding:12px 16px; border-radius:6px; margin:18px 0; overflow-x:auto; font-size:15px; line-height:1.5 }
-.question-box code{ font-family:'Fira Code','Courier New',monospace; white-space:pre-wrap; display:block; color:#9cdcfe }
+.question-box code{ font-family:'Fira Code','Courier New',monospace; white-space:pre-wrap; display:inline; color:#9cdcfe }
 
 /* Botón copiar en bloques de código */
 .code-block{ position:relative; margin:14px 0 }

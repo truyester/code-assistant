@@ -77,17 +77,20 @@ Eres un asistente de aprendizaje de Python para hispanohablantes.
       return res.status(500).send({ error: 'OPENAI_API_KEY no está configurada.' });
     }
 
-    const response = await openai.completions.create({
-      model: 'gpt-3.5-turbo-instruct',
-      prompt: buildPrompt(prompt),
-      temperature: 0,
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4.1',
+      messages: [
+        { role: 'system', content: INSTRUCTIONS },
+        { role: 'user', content: buildPrompt(prompt) },
+      ],
+      temperature: 0.2,
       max_tokens: 300,
       top_p: 1,
       frequency_penalty: 0.5,
       presence_penalty: 0,
     });
 
-    const openaiText = response.choices[0].text.trim();
+    const openaiText = response.choices[0].message?.content?.trim() || '';
     // Procesa como Markdown para entregar HTML consistente con Gemini
     const RenderTextHTML = marked.parse(openaiText);
 
