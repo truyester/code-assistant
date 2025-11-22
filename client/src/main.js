@@ -19,6 +19,7 @@
 })();
 let currentModel = 'openai';
 
+// Comentario: mantiene el estado de modelo y actualiza el boton de alternancia
 // Toggle de modelo
 document.getElementById('toggle-model')?.addEventListener('click', () => {
   currentModel = currentModel === 'openai' ? 'gemini' : 'openai';
@@ -43,6 +44,7 @@ const content = document.getElementById('content');
 const topicTitle = document.getElementById('topicTitle');
 let current = (decodeURIComponent(location.hash.slice(1)) || localStorage.getItem('py-topic') || 'data-types');
 
+// Renderiza la barra lateral de temas y marca el tema actual
 function renderNav(){
   if (!nav) return;
   nav.innerHTML = '';
@@ -66,6 +68,7 @@ async function loadTopic(){
     const res = await fetch(`/topics/${t.file}`);
     const html = await res.text();
     content.innerHTML = html;
+    // Reaplica widgets interactivos y prompts al cambiar de tema
     wireAskButtons(content);
     enhanceCodeBlocks(content);
     enhanceSolutions(content);
@@ -284,6 +287,7 @@ async function ensurePromptsLoaded(){
   }
 }
 
+// Pinta chips de prompts rapidos para el tema actual
 function renderQuickPrompts(sectionEl, container){
   if (!container) return;
   container.innerHTML = '';

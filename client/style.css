@@ -1,6 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 
-/* Palette (coincide con front-end.html) */
+/* Paleta (coincide con front-end.html) */
 :root{
   --bg: #0b1220;
   --panel: #141b2b;
@@ -17,7 +17,7 @@
 *{ margin:0; padding:0; box-sizing:border-box; font-family:"Alegreya Sans", sans-serif }
 body{ background:var(--bg); color:var(--text) }
 
-/* Layout: sidebar + main */
+/* Distribucion: barra lateral + contenido principal */
 .wrapper{max-width:1200px; margin:0 auto; padding:24px}
 .layout{display:flex; gap:24px}
 .sidebar{width:280px; flex:0 0 auto; background:linear-gradient(180deg, var(--panel) 0%, #101827 100%); border:1px solid var(--border); border-radius:16px; height:calc(100dvh - 48px); position:sticky; top:24px; overflow:auto; padding:16px}
@@ -34,7 +34,7 @@ main{ flex:1; background:linear-gradient(180deg, var(--panel) 0%, #111a2a 100%);
 .ask-btn, .send-btn{ background:var(--accent); color:var(--text); border:0; padding:10px 15px; border-radius:5px; cursor:pointer; margin-top:16px; display:block }
 .ask-btn:hover{ background:var(--accent-hover) }
 .question-box{ display:none; margin-top:14px }
-.question-box textarea{ width:100%; padding:10px; border-radius:5px; border:none; outline:none; background:transparent; color:var(--text); font-size:16px; line-height:1.45 }
+.question-box textarea{ width:100%; padding:10px; border-radius:5px; border:none; outline:none; background:transparent; color:var(--text); font-size:16px; line-height:1.45 } /* Campo de preguntas mas legible */
 .question-box .response{ margin-top:10px; padding:10px; background:var(--panel-soft); border-radius:5px; color:var(--text); white-space:pre-wrap; -ms-overflow-style:none; scrollbar-width:none }
 
 /* Modelo */
@@ -67,7 +67,7 @@ details.solution pre{ margin-top:10px }
 /* Utilidad */
 .muted{ color:var(--text-dim) }
 
-/* Quick prompts (minimal styling; isolated) */
+/* Prompts rapidos (estilo minimo y aislados) */
 .quick-prompts{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 }
 .prompt-chip{
   background: var(--panel);
