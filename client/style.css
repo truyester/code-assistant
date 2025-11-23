@@ -79,3 +79,33 @@ details.solution pre{ margin-top:10px }
   cursor: pointer;
 }
 .prompt-chip:hover{ background: var(--panel-soft) }
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .wrapper{padding:16px}
+  .layout{flex-direction:column; gap:16px}
+  .sidebar{
+    width:100%;
+    position:static;
+    height:auto;
+    top:auto;
+    border-radius:12px;
+  }
+  main{
+    width:100%;
+    border-radius:12px;
+  }
+  .nav{flex-direction:row; flex-wrap:wrap}
+  .nav button{flex:1 1 45%; min-width:160px}
+}
+
+@media (max-width: 640px){
+  .wrapper{padding:12px}
+  .ask-btn, .send-btn{width:100%; text-align:center}
+  #toggle-model{width:100%;}
+  pre{font-size:14px; padding:10px 12px}
+  .copy-btn{top:6px; right:6px}
+  .nav button{flex:1 1 100%}
+  .sidebar h2{font-size:16px}
+  main{padding:16px}
+}
