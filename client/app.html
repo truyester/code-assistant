@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/ICONO-Photoroom.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistente de Python</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <div class="layout">
+          <aside class="sidebar" aria-label="Lista de temas de Python">
+            <h2>Temas</h2>
+            <nav class="nav" id="topicsNav"></nav>
+          </aside>
+
+          <main>
+            <button id="toggle-model">Modelo: OpenAI</button>
+            <h2 id="topicTitle">Tipos de Datos en Python</h2>
+            <section id="content"></section>
+          </main>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+ </html>
