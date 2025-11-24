@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
-// Allow overriding API target if client/server run in different hosts (e.g., Windows vs WSL)
+// Permite ajustar el backend según entorno (Render en prod, localhost en dev)
 const apiTarget = process.env.VITE_API_TARGET || 'http://localhost:5001';
 
 export default defineConfig({
@@ -13,6 +14,15 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+  build: {
+    rollupOptions: {
+      // Genera salidas para index.html (landing) y app.html (app principal)
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        app: resolve(__dirname, 'app.html'),
       },
     },
   },
