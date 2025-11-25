@@ -29,7 +29,7 @@ app.get('/', async (req, res) => {
   res.status(200).send({ message: 'Hello!' });
 });
 
-app.post('/', async (req, res) => {
+const chatHandler = async (req, res) => {
   try {
     const { prompt, model } = req.body;
     // Instrucciones comunes para mantener el tono y estructura de las respuestas
@@ -109,7 +109,10 @@ Eres un asistente de aprendizaje de Python para hispanohablantes.
     console.error(error);
     res.status(500).send(error || 'Something went wrong');
   }
-});
+};
+
+// Expone el handler tanto en / como en /api para compatibilidad con frontends
+app.post(['/', '/api', '/api/'], chatHandler);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log('AI server started on http://localhost:5001'));
