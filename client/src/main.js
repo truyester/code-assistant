@@ -89,6 +89,11 @@ window.addEventListener('hashchange', () => {
   loadTopic();
 });
 
+// Base de API: en producción usa VITE_API_TARGET, en desarrollo se mantiene /api con proxy
+const API_BASE = (import.meta.env && import.meta.env.VITE_API_TARGET)
+  ? import.meta.env.VITE_API_TARGET.replace(/\/+$/, '')
+  : '';
+
 // Adjunta comportamiento de Preguntar al asistente
 function wireAskButtons(root){
   const buttons = root.querySelectorAll('.ask-btn');
@@ -130,7 +135,7 @@ function wireAskButtons(root){
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-          const response = await fetch('/api/', {
+          const response = await fetch(`${API_BASE}/api/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: question, model: currentModel }),
