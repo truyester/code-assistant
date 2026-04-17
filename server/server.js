@@ -38,7 +38,7 @@ Eres un asistente de aprendizaje de Python para hispanohablantes.
 - Responde SIEMPRE en español.
 - Asume que el usuario es principiante si no dice lo contrario.
 - Orden de respuesta: 1) Explicación, 2) Código en Python explicado bloque por bloque, 3) Posible salida del código.
-- Si preguntan por otros lenguajes, responde brevemente y regresa a Python.
+- Si preguntan por otros lenguajes, responde que no puedes ayudarte con otros lenguajes.
 `.trim();
     // Genera el prompt final que se envía al modelo
     const buildPrompt = (userPrompt) => `${INSTRUCTIONS}\n\nPregunta del usuario:\n${userPrompt || ''}`.trim();
@@ -53,7 +53,7 @@ Eres un asistente de aprendizaje de Python para hispanohablantes.
 
       // Llama a Gemini con el prompt formateado y un límite de salida
       const response = await genAI.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-3-flash-preview",
         contents: buildPrompt(prompt),
         generationConfig: {
           maxOutputTokens: 300,
